@@ -169,6 +169,17 @@ python train_gpt2.py --inference_only 1 --write_tensors 0 --sequence_length 1024
 
 The time drops down to 26.2ms/iteration. So at the current 26.2ms/iteration we, amusingly and right now, have an identical running time. This somewhat makes sense because most of the FLOPs are in the matmul, and we both call about the same kernels. The remainder of the difference is likely our self-attention implementation, and possibly the round trips for GeLU, and permute/unpermute.
 
+# Some Benchmark Numbers with newer version of PyTorch
+Run on an A100-80GB
+
+```
+llm.c: 23.026892
+PyTorch 2.2: 22.408ms
+PyTorch nightly: 21.090ms
+PyTorch nightly + F.sdpa: 19.224ms
+PyTorch nightly + F.sdpa + coordinate descent tuning : 18.809ms
+```
+
 ## discussions
 
 Ways of organizing development:
