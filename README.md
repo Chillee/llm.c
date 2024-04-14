@@ -180,6 +180,8 @@ PyTorch nightly + F.sdpa: 19.224ms
 PyTorch nightly + F.sdpa + coordinate descent tuning : 18.809ms
 ```
 
+I also added an example of the Inductor generated code with a cpp wrapper in [inductor_gpt2.cpp](inductor_gpt2.cpp)
+
 ## discussions
 
 Ways of organizing development:
